@@ -1,0 +1,340 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Responsive Website with Tailwind CSS</title>
+
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <!-- Bootstrap CSS -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        cursor: none;
+      }
+
+      .magic-cursor {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        pointer-events: none;
+        z-index: 10000;
+        background: radial-gradient(circle, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0));
+        box-shadow: 0 0 10px 5px rgba(255, 215, 0, 0.5);
+        animation: glitter 1.5s infinite;
+      }
+
+      @keyframes glitter {
+        0%, 100% {
+          transform: scale(1);
+        }
+        50% {
+          transform: scale(1.5);
+        }
+      }
+
+      .colorful-click {
+        position: absolute;
+        border-radius: 50%;
+        pointer-events: none;
+        animation: colorful-explosion 1s forwards;
+        z-index: 10000;
+      }
+
+      @keyframes colorful-explosion {
+        0% {
+          opacity: 1;
+          transform: scale(1);
+        }
+        100% {
+          opacity: 0;
+          transform: scale(10);
+        }
+      }
+    </style>
+  </head>
+  <body class="bg-gray-100">
+    <!-- Magic Cursor -->
+    <div id="magic-cursor" class="magic-cursor"></div>
+
+    <!-- Navbar -->
+    <nav class="bg-blue-600 text-white shadow-lg">
+      <div class="container mx-auto px-4 py-2 flex justify-between items-center">
+        <a class="text-xl font-bold" href="#">Prensu's Site</a>
+        <ul class="hidden md:flex space-x-6">
+          <li><a class="hover:text-yellow-300 transition" href="">Home</a></li>
+          <li><a class="hover:text-yellow-300 transition" href="About.html">About</a></li>
+          <li class="relative group">
+            <a
+              class="hover:text-yellow-300 transition cursor-pointer"
+              >Topics</a
+            >
+            <ul class="absolute hidden group-hover:block bg-blue-700 shadow-lg mt-2">
+              <li><a class="block px-4 py-2 hover:bg-blue-800" href="#">Adventure</a></li>
+              <li><a class="block px-4 py-2 hover:bg-blue-800" href="#">Risk-Taking</a></li>
+              <li><a class="block px-4 py-2 hover:bg-blue-800" href="#">Courageous</a></li>
+              <li><a class="block px-4 py-2 hover:bg-blue-800" href="#">Write for Us</a></li>
+            </ul>
+          </li>
+          <li><a class="hover:text-yellow-300 transition" href="contact.html">Contact</a></li>
+        </ul>
+        <button class="md:hidden text-white" id="menu-toggle">Menu</button>
+      </div>
+    </nav>
+
+    <!-- Carousel -->
+    <div class="relative overflow-hidden">
+      <div
+        class="carousel"
+        id="carousel"
+        style="max-height: 500px; position: relative;"
+      >
+        <div class="carousel-item block w-full h-auto transition-opacity duration-1000 ease-in-out opacity-100">
+          <img
+            src="facebook.jpeg"
+            alt="Carousel Image 1"
+            class="w-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gray-900 bg-opacity-50 text-white flex flex-col justify-center items-center text-center space-y-4"
+          >
+            <h2 class="text-3xl font-bold">Welcome to Prensu's Website</h2>
+            <p>Adventure,Confident,Courageous Person with Positivity</p>
+            <div>
+              <button class="btn bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                Adventure
+              </button>
+              <button class="btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                Risk-Taking
+              </button>
+              <button
+                class="btn bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+              >
+                Courageous
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item block w-full h-auto transition-opacity duration-1000 ease-in-out opacity-0">
+          <img
+            src="laptop.jpeg"
+            alt="Carousel Image 2"
+            class="w-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gray-900 bg-opacity-50 text-white flex flex-col justify-center items-center text-center space-y-4"
+          >
+            <h2 class="text-3xl font-bold">Discover About Me </h2>
+            <p>Stay updated with the latest tech trends.</p>
+            <div>
+              <button class="btn bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                Adventure
+              </button>
+              <button class="btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                Risk-Taking
+              </button>
+              <button
+                class="btn bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+              >
+              Courageous
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="carousel-item block w-full h-auto transition-opacity duration-1000 ease-in-out opacity-0">
+          <img
+            src="desktop.webp"
+            alt="Carousel Image 3"
+            class="w-full object-cover"
+          />
+          <div
+            class="absolute inset-0 bg-gray-900 bg-opacity-50 text-white flex flex-col justify-center items-center text-center space-y-4"
+          >
+            <h2 class="text-3xl font-bold">Elevate Your Skills</h2>
+            <p>Learn and grow with NCoder resources.</p>
+            <div>
+              <button class="btn bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded">
+                Adventure
+              </button>
+              <button class="btn bg-blue-500 hover:bg-blue-600 text-white px-4 py-2 rounded">
+                Risk-Taking
+              </button>
+              <button
+                class="btn bg-green-500 hover:bg-green-600 text-white px-4 py-2 rounded"
+              >
+              Courageous
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Cards Section -->
+    <div class="container mx-auto py-10">
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <!-- First Card -->
+        <div
+          class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
+        >
+          <img
+            src="1.0.jpg"
+            alt="Thumbnail"
+            class="rounded-t-lg object-cover w-full h-48"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-blue-500">Trekking</h3>
+            <h2 class="text-xl font-bold">Featured Post</h2>
+            <p class="text-gray-600 mt-2">
+              My mind collapsed with the swetness of melody coming from the purest river and just stucked here ! A perfect place to start our Trekking! 
+            </p>
+          </div>
+        </div>
+
+        <!-- Second Card -->
+        <div
+          class="bg-white rounded-lg shadow-lg hover:shadow-xl transition-transform transform hover:scale-105"
+        >
+          <img
+            src="2.0.jpg"
+            alt="Thumbnail"
+            class="rounded-t-lg object-cover w-full h-48"
+          />
+          <div class="p-4">
+            <h3 class="text-lg font-semibold text-green-500">Breath-Taking</h3>
+            <h2 class="text-xl font-bold">Himalayas</h2>
+            <p class="text-gray-600 mt-2">
+              Non-stop climbs my heart beating too fast but i never thought to stop ! That's a sign of courage i have !
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div
+  class="container my-5 py-4"
+  id="contact-section"
+  style="
+    background-color: #f8f9fa;
+    border-radius: 15px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  "
+>
+  <h2 class="text-center mb-4 animate__animated animate__fadeInDown">
+    Contact Us
+  </h2>
+  <form action="/submit-contact-form" method="POST" class="p-3">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        class="form-control"
+        placeholder="Your name"
+        required
+        style="border: 2px solid #dee2e6; transition: all 0.3s ease;"
+        onfocus="this.style.border='2px solid #0d6efd';"
+        onblur="this.style.border='2px solid #dee2e6';"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        class="form-control"
+        placeholder="Your email"
+        required
+        style="border: 2px solid #dee2e6; transition: all 0.3s ease;"
+        onfocus="this.style.border='2px solid #0d6efd';"
+        onblur="this.style.border='2px solid #dee2e6';"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="subject" class="form-label">Subject:</label>
+      <input
+        type="text"
+        id="subject"
+        name="subject"
+        class="form-control"
+        placeholder="Subject"
+        required
+        style="border: 2px solid #dee2e6; transition: all 0.3s ease;"
+        onfocus="this.style.border='2px solid #0d6efd';"
+        onblur="this.style.border='2px solid #dee2e6';"
+      />
+    </div>
+    <div class="mb-3">
+      <label for="message" class="form-label">Message:</label>
+      <textarea
+        id="message"
+        name="message"
+        class="form-control"
+        placeholder="Your message"
+        rows="4"
+        required
+        style="border: 2px solid #dee2e6; transition: all 0.3s ease;"
+        onfocus="this.style.border='2px solid #0d6efd';"
+        onblur="this.style.border='2px solid #dee2e6';"
+      ></textarea>
+    </div>
+    <div class="text-center">
+      <button
+        type="submit"
+        class="btn btn-primary px-4 py-2 animate__animated animate__pulse animate__infinite"
+        style="
+          border-radius: 25px;
+          background: linear-gradient(45deg, #007bff, #0056b3);
+        "
+      >
+        Submit
+      </button>
+    </div>
+  </form>
+</div>
+
+    <script>
+      const magicCursor = document.getElementById('magic-cursor');
+
+      document.addEventListener('mousemove', (e) => {
+        magicCursor.style.top = `${e.clientY}px`;
+        magicCursor.style.left = `${e.clientX}px`;
+      });
+
+      document.addEventListener('click', (e) => {
+        const colorfulClick = document.createElement('div');
+        colorfulClick.className = 'colorful-click';
+        colorfulClick.style.width = '20px';
+        colorfulClick.style.height = '20px';
+        colorfulClick.style.top = `${e.clientY}px`;
+        colorfulClick.style.left = `${e.clientX}px`;
+        colorfulClick.style.background = `radial-gradient(circle, ${getRandomColor()}, ${getRandomColor()})`;
+        document.body.appendChild(colorfulClick);
+
+        setTimeout(() => {
+          colorfulClick.remove();
+        }, 1000);
+      });
+
+      function getRandomColor() {
+        const letters = '0123456789ABCDEF';
+        let color = '#';
+        for (let i = 0; i < 6; i++) {
+          color += letters[Math.floor(Math.random() * 16)];
+        }
+        return color;
+      }
+    </script>
+  </body>
+</html>
